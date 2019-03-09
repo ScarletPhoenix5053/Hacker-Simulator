@@ -27,6 +27,21 @@ namespace Sierra.AGPW.HackerSim
         {
             
         }
+        public void AddScenario(Scenario newScenario)
+        {
+            _scenarios.Add(newScenario);
+        }
+        public void RemoveScenario(Scenario scenario)
+        {
+            try
+            {
+                _scenarios.Remove(scenario);
+            }
+            catch(Exception)
+            {
+                Console.WriteLine("Scenarrio dosen't exist in this interaction set. Cannot remove it.");
+            }
+        }
     }
     /// <summary>
     /// Checks against other scenarios in the same set
@@ -35,17 +50,43 @@ namespace Sierra.AGPW.HackerSim
     {
         private readonly List<Case> _cases;
         private readonly Case _defaultCase;
+        private readonly Keyword[] _keywords;
         public int CallCount {get; private set;}
         
-        public Scenario(Case defaultCase, List<Case> otherCases)
+        public Scenario(Case defaultCase, List<Case> otherCases, Keyword[] keywords)
         {
             _defaultCase = defaultCase;
             _cases = otherCases;
+            _keywords = keywords;
         }
 
         public void Play()
         {
             
+        }
+        public bool Matches(Keyword[] keywords)
+        {
+            // For each of this scenario's keywords
+            for (int i = 0; i < _keywords.Length; i++)
+            {
+                var thisMatches = false;
+
+                // Check against passed keywords
+                for (int j = 0; j < keywords.Length; i++)
+                {
+                    if (_keywords[i] == keywords[j])
+                    {
+                        thisMatches = true;
+                        break;
+                    }
+                }
+
+                // If one does not match, return false
+                if (!thisMatches) return false;
+            }
+
+            // If all match, return true;
+            return true;
         }
     }
     /// <summary>

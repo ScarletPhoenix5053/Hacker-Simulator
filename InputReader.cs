@@ -102,12 +102,6 @@ namespace Sierra.AGPW.HackerSim
             KeySets.Add(newKeySet);
             KeySetsShareNoChars();
         }
-
-
-
-
-
-
     }
     /// <summary>
     /// Used by <see cref = "InputReader"/>. Contains a keyword and an array of keys (as chars) that point to it.
