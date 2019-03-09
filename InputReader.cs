@@ -90,8 +90,10 @@ namespace Sierra.AGPW.HackerSim
                         }
                     }
                 }
+
+                if (oneKeyMatched) keywords.Add(currentKeySet.Keyword);
             }
-            return null;
+            return keywords.ToArray();
         }
         /// <summary>
         /// Adds a keyset. Causes program to fail if the new keyset contains keys found in older keysets.

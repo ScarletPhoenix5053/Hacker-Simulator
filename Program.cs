@@ -13,10 +13,16 @@ namespace Sierra.AGPW.HackerSim
             
             var inputReader = new InputReader();
             var keySet1 = new KeySet(Keyword.Create, new char[]{'d','f','g'});
-            var keySet2 = new KeySet(Keyword.Create, new char[]{'e','r','s'});
+            var keySet2 = new KeySet(Keyword.Cult, new char[]{'e','r','s'});
             
             inputReader.AddKeySet(keySet1);
             inputReader.AddKeySet(keySet2);
+
+            var keywords = inputReader.CheckInput(Console.ReadLine());
+            foreach (Keyword keyword in keywords)
+            {
+                Console.WriteLine(keyword.ToString());
+            }
         }        
     }
 }
