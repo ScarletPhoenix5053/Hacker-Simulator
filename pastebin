@@ -1,0 +1,13 @@
+
+                        if (keywordChar == inputChar)
+                        {
+                            Console.WriteLine("Match between {0} and {1}", inputChar, keywordChar);
+                        }
+                        else
+                        {
+                            Console.WriteLine("No match between {0} and {1}", inputChar, keywordChar);
+                        }
+
+                        
+            KeySets.Add(new InputSet(Keyword.Create, new char[] {'q','w','e'} ));
+            KeySets.Add(new InputSet(Keyword.Cult, new char[] {'r','f','d'} ));

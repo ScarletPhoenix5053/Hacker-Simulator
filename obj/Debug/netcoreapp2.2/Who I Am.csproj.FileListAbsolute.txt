@@ -1,0 +1,22 @@
+C:\Projects\Who I Am\obj\Debug\netcoreapp2.2\Who I Am.csprojAssemblyReference.cache
+C:\Projects\Who I Am\obj\Debug\netcoreapp2.2\Who I Am.csproj.CoreCompileInputs.cache
+C:\Projects\Who I Am\obj\Debug\netcoreapp2.2\Who I Am.AssemblyInfoInputs.cache
+C:\Projects\Who I Am\obj\Debug\netcoreapp2.2\Who I Am.AssemblyInfo.cs
+C:\Projects\Who I Am\bin\Debug\netcoreapp2.2\Who I Am.deps.json
+C:\Projects\Who I Am\bin\Debug\netcoreapp2.2\Who I Am.runtimeconfig.json
+C:\Projects\Who I Am\bin\Debug\netcoreapp2.2\Who I Am.runtimeconfig.dev.json
+C:\Projects\Who I Am\bin\Debug\netcoreapp2.2\Who I Am.dll
+C:\Projects\Who I Am\bin\Debug\netcoreapp2.2\Who I Am.pdb
+C:\Projects\Who I Am\obj\Debug\netcoreapp2.2\Who I Am.dll
+C:\Projects\Who I Am\obj\Debug\netcoreapp2.2\Who I Am.pdb
+C:\Projects\Hacker Simulator\bin\Debug\netcoreapp2.2\Who I Am.deps.json
+C:\Projects\Hacker Simulator\bin\Debug\netcoreapp2.2\Who I Am.runtimeconfig.json
+C:\Projects\Hacker Simulator\bin\Debug\netcoreapp2.2\Who I Am.runtimeconfig.dev.json
+C:\Projects\Hacker Simulator\bin\Debug\netcoreapp2.2\Who I Am.dll
+C:\Projects\Hacker Simulator\bin\Debug\netcoreapp2.2\Who I Am.pdb
+C:\Projects\Hacker Simulator\obj\Debug\netcoreapp2.2\Who I Am.csprojAssemblyReference.cache
+C:\Projects\Hacker Simulator\obj\Debug\netcoreapp2.2\Who I Am.csproj.CoreCompileInputs.cache
+C:\Projects\Hacker Simulator\obj\Debug\netcoreapp2.2\Who I Am.AssemblyInfoInputs.cache
+C:\Projects\Hacker Simulator\obj\Debug\netcoreapp2.2\Who I Am.AssemblyInfo.cs
+C:\Projects\Hacker Simulator\obj\Debug\netcoreapp2.2\Who I Am.dll
+C:\Projects\Hacker Simulator\obj\Debug\netcoreapp2.2\Who I Am.pdb
