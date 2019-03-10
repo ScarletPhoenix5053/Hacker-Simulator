@@ -35,6 +35,12 @@ namespace Sierra.AGPW.HackerSim
         {
             _scenarios.Add(newScenario);
         }
+        public Scenario AddScenario(Keyword[] keywords)
+        {
+            var newScenario = new Scenario(keywords, this);
+            AddScenario(newScenario);
+            return newScenario;
+        }
         public void RemoveScenario(Scenario scenario)
         {
             try
@@ -63,28 +69,40 @@ namespace Sierra.AGPW.HackerSim
     /// </summary>
     class Scenario
     {
+        #region Vars
         private readonly InteractionSet _parentSet;
-        private readonly List<Case> _cases;
-        private readonly Case _defaultCase;
+        private List<Case> _cases = new List<Case>();
+        private Case _defaultCase = null;
         private readonly Keyword[] _keywords;
         public int CallCount {get; private set;}
         public InteractionSet Parent {get {return _parentSet;}}
         public string Name 
         {
-             get
-             {
-                 return GenerateName(_keywords);
-             }
+            get
+            {
+                return GenerateName(_keywords);
+            }
         }
+        #endregion
         
-        public Scenario(Keyword[] keywords, Case defaultCase, List<Case> otherCases, InteractionSet parentSet)
+        public Scenario(Keyword[] keywords, InteractionSet parentSet)
         {
-            _defaultCase = defaultCase;
-            _cases = otherCases;
             _keywords = keywords;
             _parentSet = parentSet;
         }
 
+        public Case AddCase(CaseData data)
+        {
+            var newCase = new Case(data, this);
+            _cases.Add(newCase);
+            return newCase;
+        }
+        public Case SetDefaultCase(CaseData data)
+        {
+            var newCase = new Case(data, this);
+            _defaultCase = newCase;
+            return newCase;
+        }
         public void Play()
         {
             Console.WriteLine("Playing scenario with keywords {0}", Name);
@@ -155,6 +173,12 @@ namespace Sierra.AGPW.HackerSim
             _parentScenario = parentScenario;
         }
 
+        public CaseCondition AddCondition(string scenarioName, int count)
+        {
+            var newCondition = new CaseCondition(scenarioName, count, this);
+            _conditions.Add(newCondition);
+            return newCondition;
+        }
         public bool Check()
         {
             foreach (CaseCondition condition in _conditions)

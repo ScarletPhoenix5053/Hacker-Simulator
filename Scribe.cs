@@ -55,6 +55,10 @@ namespace Sierra.AGPW.HackerSim
             WriteFast(message);
             Console.WriteLine();
         }
+        public void WriteNewLine()
+        {
+            Console.WriteLine();
+        }
         private void LogToConsole(string message, int charDelay)
         {
             var chars = message.ToCharArray();
