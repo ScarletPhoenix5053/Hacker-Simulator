@@ -76,8 +76,8 @@ namespace Sierra.AGPW.HackerSim
                 if (!Running) break;
 
                 // PROCESS INPUT INTO KEYWORDS
-                var keywords = inputReader.CheckInput(Console.ReadLine());
-                foreach (Keyword keyword in keywords)
+                var keywords = inputReader.CheckInput(input);
+                for (int i = 0; i < keywords.Length; i++)
                 {
                     Console.Write(keyword.ToString() + " ");
                 }
@@ -85,7 +85,15 @@ namespace Sierra.AGPW.HackerSim
                 Console.WriteLine();
                 
                 // RUN INTERACTION
-                interactionSet.PlayScenarioMatching(inputReader.CheckInput(Console.ReadLine()));
+                // Ensure there are two keywords before running
+                if (keywords.Length <= 1)
+                {
+                    Scribe.WriteFast("Command not recognized. Please pass an additional parameter.");
+                }
+                else
+                {
+                    interactionSet.PlayScenarioMatching(inputReader.CheckInput(Console.ReadLine()));
+                }
             }
         }        
     }

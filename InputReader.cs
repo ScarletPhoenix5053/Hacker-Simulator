@@ -92,6 +92,9 @@ namespace Sierra.AGPW.HackerSim
                 }
 
                 if (oneKeyMatched) keywords.Add(currentKeySet.Keyword);
+
+                // Should only ever return two keywords or less
+                if (keywords.Count >= 2) break;
             }
             return keywords.ToArray();
         }
