@@ -5,7 +5,7 @@ namespace Sierra.AGPW.HackerSim
     /// <summary>
     /// Tracks the score of the player through a game session.
     /// </summary>
-    class ScoreTracker
+    public class ScoreTracker
     {
         private int _score;
         public ScoreMultiplier Multiplier = new ScoreMultiplier(1f);
@@ -17,6 +17,8 @@ namespace Sierra.AGPW.HackerSim
         public void Increase(int points)        
         {
             _score += points;
+            Program.Scribe.WriteLineFast("Chaos + " + points);
+            Program.Scribe.WriteLineFast("Chaos : " + _score);
         }
         /// <summary>
         /// Decreases this object's sore value. Cannot decrease it below 0.
@@ -34,7 +36,7 @@ namespace Sierra.AGPW.HackerSim
     /// <summary>
     /// Struct for handling multiplier values inside <see cref = "ScoreMultiplier"/>
     /// </summary>
-    struct ScoreMultiplier
+    public struct ScoreMultiplier
     {
         private float _multiplier;
 
@@ -47,7 +49,7 @@ namespace Sierra.AGPW.HackerSim
 
         public void Increase(float value)
         {
-            _multiplier += value;
+            _multiplier += value;            
         }
         public void Decrease(float value)
         {

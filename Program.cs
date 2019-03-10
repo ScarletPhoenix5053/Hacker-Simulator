@@ -4,9 +4,10 @@ using System.Text.RegularExpressions;
 
 namespace Sierra.AGPW.HackerSim
 {
-    class Program
+    public class Program
     {
         public static Scribe Scribe;
+        public static ScoreTracker Score;
         public static bool Running = true;
         private static string[] _exitTerms = new string[]
         {
@@ -16,6 +17,12 @@ namespace Sierra.AGPW.HackerSim
             "return",
             "esc",
             "escape"
+        };
+        private static string[] _resetLoopTerms = new string[]
+        {
+            // If the player types any of these strings, the game will reset.
+            "reset",
+            "restart"
         };
         static void Main(string[] args)
         {
@@ -29,7 +36,10 @@ namespace Sierra.AGPW.HackerSim
             var keySet2 = new KeySet(Keyword.Cult, new char[]{'e','r','s'});
             
             inputReader.AddKeySet(keySet1);
-            inputReader.AddKeySet(keySet2);
+            inputReader.AddKeySet(keySet2);            
+
+            // INIT SCORE
+            Score = new ScoreTracker();
             
             // INIT INTERACTIONS
             var interactionSet = new InteractionSet();
@@ -79,6 +89,7 @@ namespace Sierra.AGPW.HackerSim
                 var keywords = inputReader.CheckInput(input);
                 for (int i = 0; i < keywords.Length; i++)
                 {
+                    var keyword = keywords[i];
                     Console.Write(keyword.ToString() + " ");
                 }
                 Console.WriteLine();
@@ -92,9 +103,9 @@ namespace Sierra.AGPW.HackerSim
                 }
                 else
                 {
-                    interactionSet.PlayScenarioMatching(inputReader.CheckInput(Console.ReadLine()));
+                    interactionSet.PlayScenarioMatching(keywords);
                 }
             }
-        }        
+        }
     }
 }

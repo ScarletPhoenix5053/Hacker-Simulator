@@ -189,8 +189,8 @@ namespace Sierra.AGPW.HackerSim
         }
         public void Run()
         {
-            Console.WriteLine(_outcome);
-            Console.WriteLine("Score + {0} points", _scoreValue);
+            Program.Scribe.WriteLine(_outcome);
+            Program.Score.Increase(_scoreValue);
         }
     }
     /// <summary>

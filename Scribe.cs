@@ -3,7 +3,7 @@ using System.Threading;
 
 namespace Sierra.AGPW.HackerSim
 {
-    class Scribe
+    public class Scribe
     {
         #region Vars
         private const int _defaultPauseDuration = 1000;
