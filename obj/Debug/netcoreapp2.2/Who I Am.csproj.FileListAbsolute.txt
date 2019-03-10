@@ -20,3 +20,14 @@ C:\Projects\Hacker Simulator\obj\Debug\netcoreapp2.2\Who I Am.AssemblyInfoInputs
 C:\Projects\Hacker Simulator\obj\Debug\netcoreapp2.2\Who I Am.AssemblyInfo.cs
 C:\Projects\Hacker Simulator\obj\Debug\netcoreapp2.2\Who I Am.dll
 C:\Projects\Hacker Simulator\obj\Debug\netcoreapp2.2\Who I Am.pdb
+C:\Users\carlo\Documents\Uni2019\Hackersim\Hacker-Simulator\bin\Debug\netcoreapp2.2\Who I Am.deps.json
+C:\Users\carlo\Documents\Uni2019\Hackersim\Hacker-Simulator\bin\Debug\netcoreapp2.2\Who I Am.runtimeconfig.json
+C:\Users\carlo\Documents\Uni2019\Hackersim\Hacker-Simulator\bin\Debug\netcoreapp2.2\Who I Am.runtimeconfig.dev.json
+C:\Users\carlo\Documents\Uni2019\Hackersim\Hacker-Simulator\bin\Debug\netcoreapp2.2\Who I Am.dll
+C:\Users\carlo\Documents\Uni2019\Hackersim\Hacker-Simulator\bin\Debug\netcoreapp2.2\Who I Am.pdb
+C:\Users\carlo\Documents\Uni2019\Hackersim\Hacker-Simulator\obj\Debug\netcoreapp2.2\Who I Am.csprojAssemblyReference.cache
+C:\Users\carlo\Documents\Uni2019\Hackersim\Hacker-Simulator\obj\Debug\netcoreapp2.2\Who I Am.csproj.CoreCompileInputs.cache
+C:\Users\carlo\Documents\Uni2019\Hackersim\Hacker-Simulator\obj\Debug\netcoreapp2.2\Who I Am.AssemblyInfoInputs.cache
+C:\Users\carlo\Documents\Uni2019\Hackersim\Hacker-Simulator\obj\Debug\netcoreapp2.2\Who I Am.AssemblyInfo.cs
+C:\Users\carlo\Documents\Uni2019\Hackersim\Hacker-Simulator\obj\Debug\netcoreapp2.2\Who I Am.dll
+C:\Users\carlo\Documents\Uni2019\Hackersim\Hacker-Simulator\obj\Debug\netcoreapp2.2\Who I Am.pdb

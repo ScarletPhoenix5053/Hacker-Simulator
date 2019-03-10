@@ -686,28 +686,30 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\river\\.nuget\\packages\\": {},
+    "C:\\Users\\carlo\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projects\\Hacker Simulator\\Who I Am.csproj",
+      "projectUniqueName": "c:\\Users\\carlo\\Documents\\Uni2019\\Hackersim\\Hacker-Simulator\\Who I Am.csproj",
       "projectName": "Who I Am",
-      "projectPath": "C:\\Projects\\Hacker Simulator\\Who I Am.csproj",
-      "packagesPath": "C:\\Users\\river\\.nuget\\packages\\",
-      "outputPath": "C:\\Projects\\Hacker Simulator\\obj\\",
+      "projectPath": "c:\\Users\\carlo\\Documents\\Uni2019\\Hackersim\\Hacker-Simulator\\Who I Am.csproj",
+      "packagesPath": "C:\\Users\\carlo\\.nuget\\packages\\",
+      "outputPath": "c:\\Users\\carlo\\Documents\\Uni2019\\Hackersim\\Hacker-Simulator\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\river\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\carlo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.2"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

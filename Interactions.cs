@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace Sierra.AGPW.HackerSim
 {
+    
     /// <summary>
     /// Container for all scenarios used by this game
     /// </summary>
@@ -25,7 +26,10 @@ namespace Sierra.AGPW.HackerSim
         /// <param name="keywords"></param>
         public void PlayScenarioMatching(Keyword[] keywords)
         {
-            
+            foreach (Scenario scenario in _scenarios)
+            {
+                if (scenario.Matches(keywords)) scenario.Play();
+            }
         }
         public void AddScenario(Scenario newScenario)
         {
@@ -42,39 +46,71 @@ namespace Sierra.AGPW.HackerSim
                 Console.WriteLine("Scenarrio dosen't exist in this interaction set. Cannot remove it.");
             }
         }
+        public int GetScenarioCallCount(string scenarioName)
+        {
+            for (int i = 0; i < _scenarios.Count; i++)
+            {
+                var scenario = _scenarios[i];
+                if (scenario.Name == scenarioName) return scenario.CallCount;
+            }
+
+            // If reached this far, there was no matching scenario: throw exception
+            throw new ScenarioNotFoundException();
+        }
     }
     /// <summary>
     /// Checks against other scenarios in the same set
     /// </summary>
     class Scenario
     {
+        private readonly InteractionSet _parentSet;
         private readonly List<Case> _cases;
         private readonly Case _defaultCase;
         private readonly Keyword[] _keywords;
         public int CallCount {get; private set;}
+        public InteractionSet Parent {get {return _parentSet;}}
+        public string Name 
+        {
+             get
+             {
+                 return GenerateName(_keywords);
+             }
+        }
         
-        public Scenario(Case defaultCase, List<Case> otherCases, Keyword[] keywords)
+        public Scenario(Keyword[] keywords, Case defaultCase, List<Case> otherCases, InteractionSet parentSet)
         {
             _defaultCase = defaultCase;
             _cases = otherCases;
             _keywords = keywords;
+            _parentSet = parentSet;
         }
 
         public void Play()
         {
-            
+            Console.WriteLine("Playing scenario with keywords {0}", Name);
+
+            for (int i = 0; i < _cases.Count; i++)
+            {
+                if (_cases[i].Check())
+                {
+                     _cases[i].Run();
+                     return;
+                }
+            }
+
+            _defaultCase.Run();
         }
         public bool Matches(Keyword[] keywords)
         {
-            // For each of this scenario's keywords
-            for (int i = 0; i < _keywords.Length; i++)
+            // For each of the passed keywords
+            for (int i = 0; i < keywords.Length; i++)
             {
                 var thisMatches = false;
 
-                // Check against passed keywords
-                for (int j = 0; j < keywords.Length; i++)
+                // Check this scenario's keywords
+                for (int j = 0; j < _keywords.Length; j++)
                 {
-                    if (_keywords[i] == keywords[j])
+                    if (keywords[i] == _keywords[j])
                     {
                         thisMatches = true;
                         break;
@@ -88,6 +124,15 @@ namespace Sierra.AGPW.HackerSim
             // If all match, return true;
             return true;
         }
+        public static string GenerateName(Keyword[] keywords)
+        {
+            var name = "";
+            foreach (Keyword keyword in keywords)
+            {
+                name += keyword.ToString() + " ";
+            }
+            return name;
+        }
     }
     /// <summary>
     /// Instructions carried out by a scenario. Contains conditions (previous scenario openings)
@@ -95,15 +140,19 @@ namespace Sierra.AGPW.HackerSim
     /// </summary>
     class Case
     {
+        private readonly Scenario _parentScenario;
         private readonly List<CaseCondition> _conditions;
         private readonly int _scoreValue;
         private readonly string _outcome;
 
-        public Case(CaseData data)
+        public Scenario Parent {get {return _parentScenario;}}
+
+        public Case(CaseData data, Scenario parentScenario)
         {
             _conditions = data.Conditions;
             _scoreValue = data.ScoreValue;
             _outcome = data.Outcome;
+            _parentScenario = parentScenario;
         }
 
         public bool Check()
@@ -113,6 +162,11 @@ namespace Sierra.AGPW.HackerSim
                 if (condition.IsMet()) return true;
             }
             return false;
+        }
+        public void Run()
+        {
+            Console.WriteLine(_outcome);
+            Console.WriteLine("Score + {0} points", _scoreValue);
         }
     }
     /// <summary>
@@ -124,8 +178,8 @@ namespace Sierra.AGPW.HackerSim
         /// Creates a default case. Erases any conditions entered.
         /// </summary>
         /// <param name="data"></param>
-        public DefaultCase(CaseData data)
-            : base(new CaseData(new List<CaseCondition>(), data.ScoreValue, data.Outcome))
+        public DefaultCase(CaseData data, Scenario parentScenario)
+            : base(new CaseData(new List<CaseCondition>(), data.ScoreValue, data.Outcome), parentScenario)
         {
 
         }
@@ -151,18 +205,20 @@ namespace Sierra.AGPW.HackerSim
     /// </summary>
     struct CaseCondition
     {
-        private Scenario _scenario;
+        private string _scenarioName;
         private int _count;
+        private Case _parentCase;
 
-        public CaseCondition(Scenario scenario, int count)
+        public CaseCondition(string scenarioName, int count, Case parentCase)
         {
-            _scenario = scenario;
+            _scenarioName = scenarioName;
             _count = count;
+            _parentCase = parentCase;
         }
 
         public bool IsMet()
         {
-            return _scenario.CallCount >= _count;
+            return _parentCase.Parent.Parent.GetScenarioCallCount(_scenarioName) >= _count;
         }
     }
 

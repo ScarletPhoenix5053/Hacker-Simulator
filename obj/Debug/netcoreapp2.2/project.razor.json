@@ -1,0 +1,14 @@
+{
+  "ProjectFilePath": "c:\\Users\\carlo\\Documents\\Uni2019\\Hackersim\\Hacker-Simulator\\Who I Am.csproj",
+  "TargetFramework": "netcoreapp2.2",
+  "TagHelpers": [],
+  "Configuration": {
+    "ConfigurationName": "UnsupportedRazor",
+    "LanguageVersion": "1.0",
+    "Extensions": [
+      {
+        "ExtensionName": "UnsupportedRazorExtension"
+      }
+    ]
+  }
+}

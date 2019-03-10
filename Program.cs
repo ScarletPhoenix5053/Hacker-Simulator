@@ -21,8 +21,23 @@ namespace Sierra.AGPW.HackerSim
             var keywords = inputReader.CheckInput(Console.ReadLine());
             foreach (Keyword keyword in keywords)
             {
-                Console.WriteLine(keyword.ToString());
+                Console.Write(keyword.ToString() + " ");
             }
+            Console.WriteLine();
+            
+            var interactionSet = new InteractionSet();
+
+            var defualtData = new CaseData(null, 1000, "Started a lunatic cult");
+            var defaultCase = new DefaultCase(defualtData);
+
+            var case1Condition1 = new CaseCondition();
+
+            var scenario1 = new Scenario(new Keyword[]{Keyword.Create}, defaultCase, interactionSet);
+            var scenario2 = new Scenario(new Keyword[]{Keyword.Cult, Keyword.Create}, defaultCase, interactionSet);
+            interactionSet.AddScenario(scenario1);
+            interactionSet.AddScenario(scenario2);
+
+            interactionSet.PlayScenarioMatching(keywords);
         }        
     }
 }

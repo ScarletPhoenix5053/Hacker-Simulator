@@ -1,2 +1,2 @@
-Working on scenario and interaction set.
-Finished setting up cases, but need to work on implimenting and testing scenarios.
+Rework interaction system from top down:
+Allow inteactionset to create scenatrios, which can create cases, which can create caseConditions.
