@@ -25,11 +25,21 @@ namespace Sierra.AGPW.HackerSim
         /// </summary>
         /// <param name="keywords"></param>
         public void PlayScenarioMatching(Keyword[] keywords)
-        {
+        {/*
             foreach (Scenario scenario in _scenarios)
             {
-                if (scenario.Matches(keywords)) scenario.Play();
+                Console.WriteLine(scenario.Name);
+            }*/
+
+            foreach (Scenario scenario in _scenarios)
+            {
+                if (scenario.Matches(keywords)) 
+                {
+                    scenario.Play();
+                    return;
+                }
             }
+            Program.Scribe.WriteFast("Command not recognized. Please choose different parameters.");
         }
         public void AddScenario(Scenario newScenario)
         {
@@ -39,6 +49,7 @@ namespace Sierra.AGPW.HackerSim
         {
             var newScenario = new Scenario(keywords, this);
             AddScenario(newScenario);
+
             return newScenario;
         }
         public void RemoveScenario(Scenario scenario)
@@ -105,18 +116,18 @@ namespace Sierra.AGPW.HackerSim
         }
         public void Play()
         {
-            Console.WriteLine("Playing scenario with keywords {0}", Name);
-
             for (int i = 0; i < _cases.Count; i++)
             {
                 if (_cases[i].Check())
                 {
                      _cases[i].Run();
+                     CallCount++;
                      return;
                 }
             }
 
             _defaultCase.Run();
+            CallCount++;
         }
         public bool Matches(Keyword[] keywords)
         {
@@ -131,6 +142,7 @@ namespace Sierra.AGPW.HackerSim
                     if (keywords[i] == _keywords[j])
                     {
                         thisMatches = true;
+                        //Console.WriteLine(keywords[i] + " matches " + _keywords[j]);
                         break;
                     }
                 }
@@ -183,9 +195,9 @@ namespace Sierra.AGPW.HackerSim
         {
             foreach (CaseCondition condition in _conditions)
             {
-                if (condition.IsMet()) return true;
+                if (!condition.IsMet()) return false;
             }
-            return false;
+            return true;
         }
         public void Run()
         {

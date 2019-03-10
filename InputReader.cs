@@ -60,6 +60,7 @@ namespace Sierra.AGPW.HackerSim
             var keywords = new List<Keyword>();
 
             // For each input set
+            KeySets.Shuffle();
             for (int keySetIndex = 0; keySetIndex < KeySets.Count; keySetIndex++)
             {
                 var currentKeySet = KeySets[keySetIndex];
@@ -121,10 +122,5 @@ namespace Sierra.AGPW.HackerSim
             Keyword = keyword;
             Keys = keys;
         }
-    }
-    enum Keyword 
-    {
-        Create,
-        Cult
     }
 }
